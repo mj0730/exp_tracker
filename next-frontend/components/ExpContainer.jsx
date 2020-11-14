@@ -1,5 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import ExpLineItem from './ExpLineItem';
+import Button from '@material-ui/core/Button';
+import DeleteIcon from '@material-ui/icons/Delete';
+import styles from '../styles/ExpInput.module.css';
 
 const ExpContainer = () => {
   const [count, setCount] = useState(1);
@@ -24,14 +27,14 @@ const ExpContainer = () => {
   return (
     <div>
       {inputList}
-      <button onClick={addInput}>add more experience</button>
-      <button onClick={() => deleteInput()}>delete</button>
+      <div>
+        <Button onClick={addInput}>add more experience</Button>
+        <Button startIcon={<DeleteIcon />} onClick={() => deleteInput()}>
+          delete
+        </Button>
+      </div>
     </div>
   );
 };
 
 export default ExpContainer;
-// display: flex;
-// width: 400px;
-// justify-content: space-between;
-//child width: 30%;

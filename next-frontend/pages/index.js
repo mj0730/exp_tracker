@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import ExpContainer from '../components/ExpContainer';
-import ExpLineItem from '../components/ExpLineItem';
+import LinearStepper from '../components/LinearStepper';
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
@@ -16,6 +16,7 @@ export default function Home() {
 
         <p className={styles.description}>Get started by adding your information.</p>
         <ExpContainer />
+        <LinearStepper></LinearStepper>
       </main>
 
       <footer className={styles.footer}>

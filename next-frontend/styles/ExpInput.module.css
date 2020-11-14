@@ -1,0 +1,9 @@
+.form {
+  display: flex;
+  width: 400px;
+  justify-content: space-between;
+}
+
+.form > div {
+  width: 30%;
+}

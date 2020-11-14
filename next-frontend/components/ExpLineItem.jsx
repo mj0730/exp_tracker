@@ -1,14 +1,15 @@
 import { MenuItem } from '@material-ui/core';
 import { Field, Formik, Form } from 'formik';
 import { TextField, Select } from 'formik-material-ui';
+import styles from '../styles/ExpInput.module.css';
 
 const ExpLineItem = () => {
   const initialValues = {};
 
   return (
-    <div>
+    <div className={styles.item}>
       <Formik initialValues={initialValues}>
-        <Form>
+        <Form className={styles.form}>
           <Field name='org' component={Select} label='Organization' multiple={false}>
             <MenuItem value='mil'>Military</MenuItem>
             <MenuItem value='contract'>Contract</MenuItem>
