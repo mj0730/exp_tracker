@@ -9,13 +9,7 @@ const ExpLineItem = () => {
     <div>
       <Formik initialValues={initialValues}>
         <Form>
-          <Field
-            name='org'
-            component={Select}
-            label='Organization'
-            multiple={false}
-            inputProps={{ name: 'name', id: 'id' }}
-          >
+          <Field name='org' component={Select} label='Organization' multiple={false}>
             <MenuItem value='mil'>Military</MenuItem>
             <MenuItem value='contract'>Contract</MenuItem>
             <MenuItem value='faa'>FAA</MenuItem>
