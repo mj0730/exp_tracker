@@ -1,5 +1,6 @@
 import Head from 'next/head';
-import MainForm from '../components/MainForm';
+import ExpContainer from '../components/ExpContainer';
+import ExpLineItem from '../components/ExpLineItem';
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
@@ -14,7 +15,7 @@ export default function Home() {
         <h1 className={styles.title}>Previous Experience Tracker</h1>
 
         <p className={styles.description}>Get started by adding your information.</p>
-        <MainForm />
+        <ExpContainer children={<ExpLineItem />} />
       </main>
 
       <footer className={styles.footer}>
