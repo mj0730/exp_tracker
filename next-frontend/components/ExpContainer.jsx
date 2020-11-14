@@ -1,13 +1,27 @@
+import { useState, useEffect } from 'react';
 import ExpLineItem from './ExpLineItem';
 
-const ExpContainer = ({ children }) => {
-  const addLineItem = () => {};
+const ExpContainer = () => {
+  const [inputList, setInputList] = useState([<ExpLineItem key='1' />]);
+
+  const addInput = () => {
+    if (inputList.length == 5) {
+      alert('Please add only the five most recent facilities.');
+      return;
+    }
+    setInputList(inputList.concat(<ExpLineItem key={inputList.length} />));
+  };
+
   return (
     <div>
-      {children}
-      <button onClick={() => addLineItem()}>add more experience</button>
+      {inputList}
+      <button onClick={addInput}>add more experience</button>
     </div>
   );
 };
 
 export default ExpContainer;
+// display: flex;
+// width: 400px;
+// justify-content: space-between;
+//child width: 30%;

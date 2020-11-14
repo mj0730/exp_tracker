@@ -15,7 +15,7 @@ export default function Home() {
         <h1 className={styles.title}>Previous Experience Tracker</h1>
 
         <p className={styles.description}>Get started by adding your information.</p>
-        <ExpContainer children={<ExpLineItem />} />
+        <ExpContainer />
       </main>
 
       <footer className={styles.footer}>

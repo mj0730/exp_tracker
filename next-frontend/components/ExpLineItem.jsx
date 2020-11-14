@@ -17,8 +17,8 @@ const ExpLineItem = () => {
             inputProps={{ name: 'name', id: 'id' }}
           >
             <MenuItem value='mil'>Military</MenuItem>
-            <MenuItem value='dogs'>Contract</MenuItem>
-            <MenuItem value='dogs'>FAA</MenuItem>
+            <MenuItem value='contract'>Contract</MenuItem>
+            <MenuItem value='faa'>FAA</MenuItem>
           </Field>
           <Field name='facility' component={TextField} label='Facility' />
           <Field name='type' component={Select} label='Type' multiple={false}>
