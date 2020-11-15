@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Button, Container } from '@material-ui/core';
+import { Button, Box } from '@material-ui/core';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import OfferLineItem from './OfferLineItem';
@@ -38,7 +38,7 @@ function OfferContainer() {
   }
 
   return (
-    <Container>
+    <Box>
       {inputList}
       <Button startIcon={<AddCircleOutlineIcon />} onClick={addInput}>
         Add More
@@ -46,7 +46,7 @@ function OfferContainer() {
       <Button startIcon={<HighlightOffIcon />} onClick={() => deleteInput()}>
         Delete
       </Button>
-    </Container>
+    </Box>
   );
 }
 
