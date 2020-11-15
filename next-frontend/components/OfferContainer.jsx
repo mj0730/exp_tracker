@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Button, Box } from '@material-ui/core';
-import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import { AddCircleOutlineIcon, HighlightOffIcon } from '@material-ui/icons';
 import OfferLineItem from './OfferLineItem';
 
 function OfferContainer() {

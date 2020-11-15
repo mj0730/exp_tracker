@@ -1,6 +1,4 @@
-import MenuItem from '@material-ui/core/MenuItem';
-import InputLabel from '@material-ui/core/InputLabel';
-import FormControl from '@material-ui/core/FormControl';
+import { MenuItem, InputLabel, FormControl } from '@material-ui/core';
 import { Field, Formik, Form, useFormik } from 'formik';
 import { TextField, Select } from 'formik-material-ui';
 import styles from '../styles/ExpInput.module.css';
