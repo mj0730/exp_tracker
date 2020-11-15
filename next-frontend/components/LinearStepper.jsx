@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
@@ -23,34 +23,24 @@ function getSteps() {
   return ['Add previous experience', 'Add offer information', 'Submit'];
 }
 
-function getStepContent(stepIndex) {
-  switch (stepIndex) {
-    case 0:
-      return 'Add previous experience';
-    case 1:
-      return 'Add offer information';
-    case 2:
-      return 'Submit';
-    default:
-      return 'Unknown stepIndex';
-  }
-}
-
-export default function HorizontalLabelPositionBelowStepper() {
+export default function HorizontalLabelPositionBelowStepper({ setIndexPageStep }) {
   const classes = useStyles();
-  const [activeStep, setActiveStep] = React.useState(0);
+  const [activeStep, setActiveStep] = useState(0);
   const steps = getSteps();
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    setIndexPageStep((prevActiveStep) => prevActiveStep + 1);
   };
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    setIndexPageStep((prevActiveStep) => prevActiveStep - 1);
   };
 
   const handleReset = () => {
     setActiveStep(0);
+    setIndexPageStep(0);
   };
 
   return (

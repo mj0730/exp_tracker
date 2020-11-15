@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { Button, Container } from '@material-ui/core';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
@@ -12,6 +13,8 @@ function OfferContainer() {
     <OfferLineItem key='4' />,
     <OfferLineItem key='5' />,
   ]);
+  const [disableDelete, setDisableDelete] = useState();
+  const [disableAdd, setDisableAdd] = useState();
 
   useEffect(() => {
     inputList.length == 1 ? setDisableDelete(true) : setDisableDelete(false);
@@ -46,3 +49,5 @@ function OfferContainer() {
     </Container>
   );
 }
+
+export default OfferContainer;

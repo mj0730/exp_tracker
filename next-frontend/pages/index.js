@@ -1,9 +1,13 @@
+import { useState } from 'react';
 import Head from 'next/head';
 import ExpContainer from '../components/ExpContainer';
+import OfferContainer from '../components/OfferContainer';
 import LinearStepper from '../components/LinearStepper';
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
+  const [step, setStep] = useState(0);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -15,8 +19,8 @@ export default function Home() {
         <h1 className={styles.title}>Previous Experience Tracker</h1>
 
         <p className={styles.description}>Get started by adding your information.</p>
-        <ExpContainer />
-        <LinearStepper></LinearStepper>
+        {step == 0 ? <ExpContainer /> : <OfferContainer />}
+        <LinearStepper setIndexPageStep={setStep}></LinearStepper>
       </main>
 
       <footer className={styles.footer}>
