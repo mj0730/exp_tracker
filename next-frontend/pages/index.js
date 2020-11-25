@@ -5,9 +5,7 @@ import FormContainer from '../components/FormContainer';
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
-  //const [step, setStep] = useState(0);
-  const step = 0;
-  const setStep = () => {};
+  const [step, setStep] = useState(0);
   return (
     <div className={styles.container}>
       <Head>

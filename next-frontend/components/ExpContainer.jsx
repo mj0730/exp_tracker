@@ -13,7 +13,7 @@ import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 //Style
 import styles from '../styles/ExpInput.module.css';
 
-const ExpContainer = ({ values }) => {
+const ExpContainer = ({ values, handleChange }) => {
   const blankLine = { agency: '', facility: '', type: '' };
   const [disableDelete, setDisableDelete] = useState(true);
   const [disableAdd, setDisableAdd] = useState(false);
@@ -32,7 +32,7 @@ const ExpContainer = ({ values }) => {
             <>
               <Box id='field-array'>
                 {values.inputData.map((item, i) => {
-                  return <ExpLineItem i={i} key={i} />;
+                  return <ExpLineItem key={i} i={i} handleChange={handleChange} />;
                 })}
               </Box>
 

@@ -3,6 +3,7 @@ import { Box, LinearProgress } from '@material-ui/core';
 import ExpContainer from './ExpContainer';
 import OfferContainer from './OfferContainer';
 import Submit from './Submit';
+import * as yup from 'yup';
 import styles from '../styles/FormContainer.module.css';
 
 function FormContainer({ step }) {
@@ -13,17 +14,17 @@ function FormContainer({ step }) {
 
   function validate(values) {
     const errors = {};
-    if (!values.facility) {
+    if (!values.inputData.facility) {
       errors.facility = 'A facility ID is required';
-    } else if (values.facility.length != 3) {
+    } else if (values.inputData.facility.length != 3) {
       errors.facility = 'Must be 3 characters';
     }
 
-    if (!values.agency) {
+    if (!values.inputData.agency) {
       errors.agency = 'Agency name is required';
     }
 
-    if (!values.type) {
+    if (!values.inputData.type) {
       errors.type = 'Facility type is required';
     }
 
@@ -43,7 +44,7 @@ function FormContainer({ step }) {
         {({ values, handleChange, handleBlur, handleSubmit, submitForm, isSubmitting }) => (
           <Form className={styles.form} onSubmit={handleSubmit}>
             {step == 0 && <ExpContainer values={values} handleChange={handleChange} />}
-            {step == 1 && <OfferContainer />}
+            {step == 1 && <OfferContainer values={values} handleChange={handleChange} />}
             {step == 2 && <Submit isSubmitting={isSubmitting} submitForm={submitForm} />}
             {isSubmitting && <LinearProgress />}
             {step == 3 && <p>Thank you for adding to the database.</p>}
