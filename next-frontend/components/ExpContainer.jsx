@@ -12,9 +12,9 @@ import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 //Style
 import styles from '../styles/ExpInput.module.css';
 
-const ExpContainer = () => {
+const ExpContainer = ({ values, handleChange }) => {
   const [count, setCount] = useState(2);
-  const [inputList, setInputList] = useState([<ExpLineItem key='1' />]);
+  const [inputList, setInputList] = useState([<ExpLineItem key='1' values={values} handleChange={handleChange} />]);
   const [disableDelete, setDisableDelete] = useState();
   const [disableAdd, setDisableAdd] = useState();
 
@@ -26,7 +26,7 @@ const ExpContainer = () => {
   function addInput() {
     if (inputList.length < 5) {
       setCount(count + 1);
-      setInputList(inputList.concat(<ExpLineItem key={count} />));
+      setInputList(inputList.concat(<ExpLineItem key={count} values={values} handleChange={handleChange} />));
     }
   }
 
@@ -40,9 +40,9 @@ const ExpContainer = () => {
   }
 
   return (
-    <Box>
-      {inputList}
-      <Box display='flex' justifyContent='space-between'>
+    <>
+      <Box className={styles.inputList}>{inputList}</Box>
+      <Box className={styles.controls}>
         <Button startIcon={<AddCircleOutlineIcon />} color='default' onClick={addInput} disabled={disableAdd}>
           Add Experience
         </Button>
@@ -50,7 +50,7 @@ const ExpContainer = () => {
           Delete
         </Button>
       </Box>
-    </Box>
+    </>
   );
 };
 

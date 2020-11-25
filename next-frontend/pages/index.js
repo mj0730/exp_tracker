@@ -1,9 +1,7 @@
 import { useState } from 'react';
 import Head from 'next/head';
-import ExpContainer from '../components/ExpContainer';
-import OfferContainer from '../components/OfferContainer';
 import LinearStepper from '../components/LinearStepper';
-import Submit from '../components/Submit';
+import FormContainer from '../components/FormContainer';
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
@@ -19,11 +17,8 @@ export default function Home() {
       <main className={styles.main}>
         <h1 className={styles.title}>Previous Experience Tracker</h1>
         <p className={styles.description}>Get started by adding your information.</p>
-        {step == 0 && <ExpContainer />}
-        {step == 1 && <OfferContainer />}
-        {step == 2 && <Submit />}
-        {/*step 3 placeholder to add links or show results or whatever */}
 
+        <FormContainer step={step} />
         <LinearStepper setIndexPageStep={setStep}></LinearStepper>
       </main>
 

@@ -1,9 +1,12 @@
-.form {
+.inputList {
+}
+
+.inputListItem,
+.controls {
   display: flex;
-  width: 400px;
   justify-content: space-between;
 }
 
-.form > div {
+.inputListItem > div {
   width: 30%;
 }
