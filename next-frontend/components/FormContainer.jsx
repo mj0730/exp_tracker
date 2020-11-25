@@ -7,9 +7,7 @@ import styles from '../styles/FormContainer.module.css';
 
 function FormContainer({ step }) {
   const initialValues = {
-    facility: [],
-    agency: [],
-    type: [],
+    inputData: [{ agency: '', facility: '', type: '' }],
   };
 
   function validate(values) {
