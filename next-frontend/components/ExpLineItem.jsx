@@ -3,23 +3,23 @@ import { Field } from 'formik';
 import { TextField, Select } from 'formik-material-ui';
 import styles from '../styles/ExpInput.module.css';
 
-const ExpLineItem = ({ values, handleChange }) => {
+const ExpLineItem = ({ i, handleChange }) => {
   return (
-    <Box className={styles.inputListItem}>
+    <Box key={i} className={styles.inputListItem}>
       <FormControl>
-        <InputLabel id='agency'>Agency</InputLabel>
-        <Field name='agency' component={Select} labelId='agency' multiple={false}>
+        <InputLabel htmlFor={`inputData.${i}.agency`}>Agency</InputLabel>
+        <Field name={`inputData.${i}.agency`} component={Select} labelId='agency' multiple={false}>
           <MenuItem value='mil'>Military</MenuItem>
           <MenuItem value='contract'>Contract</MenuItem>
           <MenuItem value='faa'>FAA</MenuItem>
         </Field>
       </FormControl>
       <FormControl>
-        <Field name='facility' component={TextField} label='Facility' value={values.facility} onChange={handleChange} />
+        <Field name={`inputData.${i}.facility`} component={TextField} label='Facility' onChange={handleChange} />
       </FormControl>
       <FormControl>
-        <InputLabel id='type'>Type</InputLabel>
-        <Field name='type' component={Select} labelId='type' multiple={false}>
+        <InputLabel htmlFor={`inputData.${i}.type`}>Type</InputLabel>
+        <Field name={`inputData.${i}.type`} component={Select} labelId='type' multiple={false}>
           <MenuItem value='tower'>Tower</MenuItem>
           <MenuItem value='approach'>Approach</MenuItem>
           <MenuItem value='facsac'>FACSAC</MenuItem>
