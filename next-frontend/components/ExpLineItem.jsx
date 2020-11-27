@@ -22,6 +22,8 @@ const ExpLineItem = ({ i, handleChange }) => {
         <Field name={`inputData.${i}.type`} component={Select} labelId='type' multiple={false}>
           <MenuItem value='tower'>Tower</MenuItem>
           <MenuItem value='approach'>Approach</MenuItem>
+          <MenuItem value='updown'>Up/Down</MenuItem>
+          <MenuItem value='center'>Center</MenuItem>
           <MenuItem value='facsac'>FACSAC</MenuItem>
           <MenuItem value='other'>Other</MenuItem>
         </Field>

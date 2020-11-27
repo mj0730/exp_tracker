@@ -19,7 +19,6 @@ const ExpContainer = ({ values, handleChange }) => {
   const [disableAdd, setDisableAdd] = useState(false);
 
   useEffect(() => {
-    console.log(values.inputData.length);
     values.inputData.length === 5 ? setDisableAdd(true) : setDisableAdd(false);
     values.inputData.length === 1 ? setDisableDelete(true) : setDisableDelete(false);
   }, [values.inputData.length]);

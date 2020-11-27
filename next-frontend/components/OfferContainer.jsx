@@ -1,24 +1,23 @@
-import { useState, useEffect } from 'react';
-import { Box } from '@material-ui/core';
+import { Field } from 'formik';
+import { TextField as FormikTextField } from 'formik-material-ui';
+import { Autocomplete } from 'formik-material-ui-lab';
+import { Box, TextField, FormControl } from '@material-ui/core';
 import Checkbox from '@material-ui/core/Checkbox';
-import TextField from '@material-ui/core/TextField';
-import Autocomplete from '@material-ui/lab/Autocomplete';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 
-function OfferContainer() {
-  const [selected, setSelected] = useState(); //this is to remember what selections someone made incase they use the back button, or to finalize submission
-
+function OfferContainer({ handleChange, touched }) {
   const icon = <CheckBoxOutlineBlankIcon fontSize='small' />;
   const checkedIcon = <CheckBoxIcon fontSize='small' />;
 
   return (
-    <Box>
-      <Autocomplete
+    <Box className='offer-container'>
+      <Field
+        name='offerData'
+        component={Autocomplete}
         multiple
-        id='faa-facilities'
-        options={facilities}
         disableCloseOnSelect
+        options={facilities}
         getOptionLabel={(option) => option}
         renderOption={(option, { selected }) => (
           <>
@@ -28,9 +27,21 @@ function OfferContainer() {
         )}
         style={{ width: 500 }}
         renderInput={(params) => (
-          <TextField {...params} variant='outlined' label='Facility List' placeholder='Facility List' />
+          <>
+            <TextField
+              {...params}
+              variant='outlined'
+              label='Facility List'
+              placeholder='Facility List'
+              onChange={handleChange}
+              error={touched['offerData'] && !!errors['offerData']}
+            />
+          </>
         )}
       />
+      <FormControl>
+        <Field name={`offerYear`} component={FormikTextField} label='Year offer received' onChange={handleChange} />
+      </FormControl>
     </Box>
   );
 }
