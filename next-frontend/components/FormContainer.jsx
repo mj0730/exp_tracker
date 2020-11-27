@@ -3,33 +3,36 @@ import { Box, LinearProgress } from '@material-ui/core';
 import ExpContainer from './ExpContainer';
 import OfferContainer from './OfferContainer';
 import Submit from './Submit';
-import * as yup from 'yup';
+import * as Yup from 'yup';
 import styles from '../styles/FormContainer.module.css';
+
+const facRegex = /[a-zA-Z]\d{2}|[a-zA-Z]{3}/;
+const validationSchema = Yup.object().shape({
+  inputData: Yup.array().of(
+    Yup.object().shape({
+      agency: Yup.string().required('All fields required'),
+      facility: Yup.string()
+        .matches(facRegex, 'Must be 3 character ID')
+        .min(3, 'Must be exactly 3 characters')
+        .max(3, 'Must be exactly 3 characters')
+        .required('All fields required'),
+      type: Yup.string().required('All fields required'),
+    })
+  ),
+  offerData: Yup.array().of(
+    Yup.string()
+      .matches(facRegex, 'Must be 3 character ID')
+      .min(3, 'Must be exactly 3 characters')
+      .max(3, 'Must be exactly 3 characters')
+      .required('All fields required')
+  ),
+});
 
 function FormContainer({ step }) {
   const initialValues = {
     inputData: [{ agency: '', facility: '', type: '' }],
     offerData: [],
   };
-
-  function validate(values) {
-    const errors = {};
-    if (!values.inputData.facility) {
-      errors.facility = 'A facility ID is required';
-    } else if (values.inputData.facility.length != 3) {
-      errors.facility = 'Must be 3 characters';
-    }
-
-    if (!values.inputData.agency) {
-      errors.agency = 'Agency name is required';
-    }
-
-    if (!values.inputData.type) {
-      errors.type = 'Facility type is required';
-    }
-
-    return errors;
-  }
 
   function submit(values, { setSubmitting }) {
     setTimeout(() => {
@@ -40,7 +43,7 @@ function FormContainer({ step }) {
 
   return (
     <Box className={styles.formContainer}>
-      <Formik initialValues={initialValues} validate={validate} onSubmit={submit}>
+      <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={submit}>
         {({ values, handleChange, handleBlur, handleSubmit, submitForm, isSubmitting }) => (
           <Form className={styles.form} onSubmit={handleSubmit}>
             {step == 0 && <ExpContainer values={values} handleChange={handleChange} />}
