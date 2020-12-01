@@ -51,10 +51,10 @@ function FormContainer({ step }) {
           <Form className={styles.form} onSubmit={handleSubmit}>
             {step == 0 && <ExpContainer values={values} handleChange={handleChange} />}
             {step == 1 && <OfferContainer values={values} handleChange={handleChange} touched={touched} />}
-            {step == 2 && <Submit isSubmitting={isSubmitting} submitForm={submitForm} />}
+            {step == 2 && <Submit values={values} isSubmitting={isSubmitting} submitForm={submitForm} />}
             {isSubmitting && <LinearProgress />}
             {step == 3 && <p>Thank you for adding to the database.</p>}
-            <pre>{JSON.stringify(values, null, 2)}</pre>
+            <pre className={styles.debug}>{JSON.stringify(values, null, 2)}</pre>
           </Form>
         )}
       </Formik>

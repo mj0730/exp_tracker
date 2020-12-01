@@ -9,3 +9,11 @@
   justify-content: space-between;
   flex-flow: column;
 }
+
+.debug {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  border: 1px solid black;
+  padding: 5px;
+}

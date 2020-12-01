@@ -1,0 +1,58 @@
+.submitReview {
+}
+
+.inputList {
+  list-style-type: none;
+  margin: 0 0 1em 0;
+  padding: 0;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.inputItem {
+  display: flex;
+  flex: 0 0 30%;
+  justify-content: space-evenly;
+  margin: 0.2rem;
+  text-transform: uppercase;
+}
+
+.listItem {
+  display: flex;
+  justify-content: space-between;
+  background-color: aliceblue;
+  border: 1px solid black;
+  border-radius: 25px;
+  font-weight: 500;
+  margin: 0.25rem 0;
+}
+
+.agency {
+  text-transform: capitalize;
+}
+
+.offerContainer {
+  margin-bottom: 2rem;
+}
+
+.offers {
+  display: flex;
+  flex: 0 0 auto;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.offerItem {
+  margin: 0.2rem;
+  padding: 2px 5px;
+  background-color: aliceblue;
+  border: 1px solid black;
+  border-radius: 25px;
+  font-weight: 500;
+  width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
