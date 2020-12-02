@@ -47,10 +47,12 @@ function FormContainer({ step }) {
   return (
     <Box className={styles.formContainer}>
       <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={submit}>
-        {({ values, touched, handleChange, handleSubmit, submitForm, isSubmitting }) => (
+        {({ values, touched, errors, handleChange, handleSubmit, submitForm, isSubmitting }) => (
           <Form className={styles.form} onSubmit={handleSubmit}>
             {step == 0 && <ExpContainer values={values} handleChange={handleChange} />}
-            {step == 1 && <OfferContainer values={values} handleChange={handleChange} touched={touched} />}
+            {step == 1 && (
+              <OfferContainer values={values} handleChange={handleChange} touched={touched} errors={errors} />
+            )}
             {step == 2 && <Submit values={values} isSubmitting={isSubmitting} submitForm={submitForm} />}
             {isSubmitting && <LinearProgress />}
             {step == 3 && <p>Thank you for adding to the database.</p>}

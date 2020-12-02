@@ -6,6 +6,13 @@ import styles from '../styles/Home.module.css';
 
 export default function Home() {
   const [step, setStep] = useState(0);
+  const instructions = [
+    'Get started by adding your information.',
+    'Add all facilities you were offered to select from.',
+    'Verify your information is correct.',
+    'Submission is complete. Thank you!',
+  ];
+
   return (
     <div className={styles.container}>
       <Head>
@@ -15,7 +22,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>Previous Experience Tracker</h1>
-        <p className={styles.description}>Get started by adding your information.</p>
+        <p className={styles.description}>{instructions[step]}</p>
 
         <FormContainer step={step} />
         <LinearStepper setIndexPageStep={setStep}></LinearStepper>

@@ -5,15 +5,17 @@ import { Box, TextField, FormControl } from '@material-ui/core';
 import Checkbox from '@material-ui/core/Checkbox';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import styles from '../styles/OfferContainer.module.css';
 
 function OfferContainer({ handleChange, touched }) {
   const icon = <CheckBoxOutlineBlankIcon fontSize='small' />;
   const checkedIcon = <CheckBoxIcon fontSize='small' />;
 
   return (
-    <Box className='offer-container'>
+    <Box className={styles.offerContainer}>
       <Field
         name='offerData'
+        className={styles.offerInput}
         component={Autocomplete}
         multiple
         disableCloseOnSelect
@@ -25,7 +27,6 @@ function OfferContainer({ handleChange, touched }) {
             {option}
           </>
         )}
-        style={{ width: 500 }}
         renderInput={(params) => (
           <>
             <TextField

@@ -38,7 +38,13 @@ function Submit({ isSubmitting, submitForm, values }) {
           })}
         </Box>
       </Box>
-      <Button variant='contained' color='primary' disabled={isSubmitting} onClick={submitForm}>
+      <Button
+        variant='contained'
+        color='primary'
+        className={styles.submit}
+        disabled={isSubmitting}
+        onClick={submitForm}
+      >
         Submit
       </Button>
     </Box>

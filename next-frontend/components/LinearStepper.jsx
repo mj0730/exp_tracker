@@ -50,7 +50,7 @@ export default function HorizontalLabelPositionBelowStepper({ setIndexPageStep }
       <div>
         {activeStep === steps.length ? (
           <div>
-            <Typography className={classes.instructions}>Thank you for adding your information.</Typography>
+            {/* <Typography className={classes.instructions}>Thank you for adding your information.</Typography> */}
             <Button onClick={handleReset}>Reset</Button>
           </div>
         ) : (

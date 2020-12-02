@@ -1,11 +1,12 @@
 .formContainer {
-  height: 350px;
+  height: auto;
   width: 400px;
+  margin-bottom: 1rem;
 }
 
 .form {
   display: flex;
-  height: 100%;
+  min-height: 240px;
   justify-content: space-between;
   flex-flow: column;
 }
