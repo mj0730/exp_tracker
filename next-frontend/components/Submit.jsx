@@ -24,7 +24,7 @@ function Submit({ isSubmitting, submitForm, values }) {
       <Box className={styles.offerContainer}>
         <ul className={styles.inputList}>
           <li className={styles.title}>Year offer received:</li>
-          <li className={styles.listItem}>{values.offerYear}</li>
+          <li className={`${styles.listItem} ${styles.year}`}>{values.offerYear}</li>
         </ul>
 
         <p className={styles.title}>Facilities:</p>
