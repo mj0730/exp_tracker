@@ -18,7 +18,7 @@ function getSteps() {
   return ['Add previous experience', 'Add offer information', 'Submit'];
 }
 
-export default function HorizontalLabelPositionBelowStepper({ setIndexPageStep }) {
+export default function HorizontalLabelPositionBelowStepper({ setIndexPageStep, submitted }) {
   const classes = useStyles();
   const [activeStep, setActiveStep] = useState(0);
   const steps = getSteps();
@@ -58,7 +58,12 @@ export default function HorizontalLabelPositionBelowStepper({ setIndexPageStep }
               <Button disabled={activeStep === 0} onClick={handleBack} className={classes.backButton}>
                 Back
               </Button>
-              <Button variant='contained' color='primary' onClick={handleNext}>
+              <Button
+                variant='contained'
+                color='primary'
+                onClick={handleNext}
+                disabled={!submitted && activeStep === steps.length - 1}
+              >
                 {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
               </Button>
             </div>

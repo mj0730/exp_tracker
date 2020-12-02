@@ -6,6 +6,8 @@ import styles from '../styles/Home.module.css';
 
 export default function Home() {
   const [step, setStep] = useState(0);
+  const [submitted, setsubmitted] = useState(false);
+
   const instructions = [
     'Get started by adding your information.',
     'Add all facilities you were offered to select from.',
@@ -24,8 +26,8 @@ export default function Home() {
         <h1 className={styles.title}>Previous Experience Tracker</h1>
         <p className={styles.description}>{instructions[step]}</p>
 
-        <FormContainer step={step} />
-        <LinearStepper setIndexPageStep={setStep}></LinearStepper>
+        <FormContainer step={step} submitted={submitted} setsubmitted={setsubmitted} />
+        <LinearStepper setIndexPageStep={setStep} submitted={submitted}></LinearStepper>
       </main>
 
       <footer className={styles.footer}>

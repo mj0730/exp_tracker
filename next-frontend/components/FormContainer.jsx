@@ -7,7 +7,7 @@ import * as Yup from 'yup';
 import styles from '../styles/FormContainer.module.css';
 
 const facRegex = /^[a-zA-Z]\d{2}|[a-zA-Z]{3}$/;
-const yearRegex = /[20]\d{2}/;
+const yearRegex = /\b([20])\d{3}\b/;
 const validationSchema = Yup.object().shape({
   inputData: Yup.array().of(
     Yup.object().shape({
@@ -27,10 +27,12 @@ const validationSchema = Yup.object().shape({
       .max(3, 'Must be exactly 3 characters')
       .required('All fields required')
   ),
-  offerYear: Yup.string().matches(yearRegex, 'Please use 4-digit year').required('Please add the year of your offer'),
+  offerYear: Yup.string()
+    .matches(yearRegex, 'Please use 4-digit year (2000 or later)')
+    .required('Please add the year of your offer'),
 });
 
-function FormContainer({ step }) {
+function FormContainer({ step, submitted, setsubmitted }) {
   const initialValues = {
     inputData: [{ agency: '', facility: '', type: '' }],
     offerData: [],
@@ -41,6 +43,7 @@ function FormContainer({ step }) {
     setTimeout(() => {
       setSubmitting(false);
       alert(JSON.stringify(values, null, 2));
+      setsubmitted(true);
     }, 500);
   }
 
