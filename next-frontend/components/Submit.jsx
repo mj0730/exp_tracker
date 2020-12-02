@@ -9,7 +9,7 @@ function Submit({ isSubmitting, submitForm, values }) {
         <li className={styles.title}>Previous Experience</li>
         {values.inputData.map((item, i) => {
           if (!item.agency || !item.facility || !item.type) {
-            return null;
+            return 'Please return to step 1 and fill in all fields.';
           }
 
           return (
@@ -24,18 +24,24 @@ function Submit({ isSubmitting, submitForm, values }) {
       <Box className={styles.offerContainer}>
         <ul className={styles.inputList}>
           <li className={styles.title}>Year offer received:</li>
-          <li className={`${styles.listItem} ${styles.year}`}>{values.offerYear}</li>
+          {!values.offerYear ? (
+            <li>Please add go back to step 2 and add the offer year.</li>
+          ) : (
+            <li className={`${styles.listItem} ${styles.year}`}>{values.offerYear}</li>
+          )}
         </ul>
 
         <p className={styles.title}>Facilities:</p>
         <Box className={styles.offers}>
-          {values.offerData.map((item, i) => {
-            return (
-              <span key={i} className={styles.offerItem}>
-                {item}
-              </span>
-            );
-          })}
+          {!values.offerData.length
+            ? 'Please go back to step 2 and add the facilities you were offered.'
+            : values.offerData.map((item, i) => {
+                return (
+                  <span key={i} className={styles.offerItem}>
+                    {item}
+                  </span>
+                );
+              })}
         </Box>
       </Box>
       <Button

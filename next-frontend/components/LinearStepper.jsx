@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, Step, Stepper, StepLabel, Typography, makeStyles } from '@material-ui/core';
+import { Button, Step, Stepper, StepLabel, makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
