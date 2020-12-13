@@ -26,8 +26,8 @@ export default function Home() {
         <h1 className={styles.title}>Previous Experience Tracker</h1>
         <p className={styles.description}>{instructions[step]}</p>
 
-        <FormContainer step={step} submitted={submitted} setsubmitted={setsubmitted} />
-        <LinearStepper setIndexPageStep={setStep} submitted={submitted}></LinearStepper>
+        <FormContainer step={step} setStep={setStep} submitted={submitted} setsubmitted={setsubmitted} />
+        <LinearStepper step={step} setIndexPageStep={setStep} submitted={submitted}></LinearStepper>
       </main>
 
       <footer className={styles.footer}>

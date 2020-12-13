@@ -32,18 +32,20 @@ const validationSchema = Yup.object().shape({
     .required('Please add the year of your offer'),
 });
 
-function FormContainer({ step, submitted, setsubmitted }) {
+function FormContainer({ step, setStep, setsubmitted }) {
   const initialValues = {
     inputData: [{ agency: '', facility: '', type: '' }],
     offerData: [],
     offerYear: '',
   };
 
-  function submit(values, { setSubmitting }) {
+  function submit(values, { setSubmitting, resetForm }) {
     setTimeout(() => {
       setSubmitting(false);
       alert(JSON.stringify(values, null, 2));
       setsubmitted(true);
+      setStep(step + 1);
+      resetForm();
     }, 500);
   }
 

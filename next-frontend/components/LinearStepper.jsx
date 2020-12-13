@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button, Step, Stepper, StepLabel, makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -14,14 +14,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function getSteps() {
-  return ['Add previous experience', 'Add offer information', 'Submit'];
-}
-
-export default function HorizontalLabelPositionBelowStepper({ setIndexPageStep, submitted }) {
+export default function HorizontalLabelPositionBelowStepper({ setIndexPageStep, step, submitted }) {
   const classes = useStyles();
   const [activeStep, setActiveStep] = useState(0);
-  const steps = getSteps();
+  const steps = ['Add previous experience', 'Add offer information', 'Submit'];
+
+  useEffect(() => {
+    if (step !== activeStep) {
+      setActiveStep(step);
+    }
+  }, [step]);
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -58,13 +60,14 @@ export default function HorizontalLabelPositionBelowStepper({ setIndexPageStep, 
               <Button disabled={activeStep === 0} onClick={handleBack} className={classes.backButton}>
                 Back
               </Button>
+
               <Button
                 variant='contained'
                 color='primary'
                 onClick={handleNext}
-                disabled={!submitted && activeStep === steps.length - 1}
+                disabled={activeStep === steps.length - 1 ? true : false}
               >
-                {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+                Next
               </Button>
             </div>
           </div>
