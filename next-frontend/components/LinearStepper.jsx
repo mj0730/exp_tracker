@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Button, Step, Stepper, StepLabel, makeStyles } from '@material-ui/core';
+import { Box, Button, Step, Stepper, StepLabel, makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function HorizontalLabelPositionBelowStepper({ setIndexPageStep, step, submitted }) {
+export default function HorizontalLabelPositionBelowStepper({ setIndexPageStep, step }) {
   const classes = useStyles();
   const [activeStep, setActiveStep] = useState(0);
   const steps = ['Add previous experience', 'Add offer information', 'Submit'];
@@ -41,7 +41,7 @@ export default function HorizontalLabelPositionBelowStepper({ setIndexPageStep, 
   };
 
   return (
-    <div className={classes.root}>
+    <Box className={classes.root}>
       <Stepper activeStep={activeStep} alternativeLabel>
         {steps.map((label) => (
           <Step key={label}>
@@ -49,14 +49,14 @@ export default function HorizontalLabelPositionBelowStepper({ setIndexPageStep, 
           </Step>
         ))}
       </Stepper>
-      <div>
+      <Box>
         {activeStep === steps.length ? (
-          <div>
+          <Box>
             <Button onClick={handleReset}>Reset</Button>
-          </div>
+          </Box>
         ) : (
-          <div>
-            <div>
+          <Box>
+            <Box>
               <Button disabled={activeStep === 0} onClick={handleBack} className={classes.backButton}>
                 Back
               </Button>
@@ -69,10 +69,10 @@ export default function HorizontalLabelPositionBelowStepper({ setIndexPageStep, 
               >
                 Next
               </Button>
-            </div>
-          </div>
+            </Box>
+          </Box>
         )}
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 }

@@ -2,7 +2,6 @@ import { Box, Button } from '@material-ui/core';
 import styles from '../styles/Submit.module.css';
 
 function Submit({ isSubmitting, submitForm, values }) {
-  //make box display flex, move button to bottom of box, width 100%
   return (
     <Box className='submitReview'>
       <ul className={styles.inputList}>

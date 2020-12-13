@@ -60,7 +60,7 @@ function FormContainer({ step, setStep, setsubmitted }) {
             )}
             {step == 2 && <Submit values={values} isSubmitting={isSubmitting} submitForm={submitForm} />}
             {isSubmitting && <LinearProgress />}
-            {step == 3 && <p>Thank you for adding to the database.</p>}
+            {step == 3 && <p className={styles.center}>Thank you for adding to the database.</p>}
             <pre className={styles.debug}>{JSON.stringify(values, null, 2)}</pre>
           </Form>
         )}
