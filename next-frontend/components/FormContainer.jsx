@@ -40,6 +40,12 @@ function FormContainer({ step, setStep, setsubmitted }) {
   };
 
   function submit(values, { setSubmitting, resetForm }) {
+    for (let key in values) {
+      if (key.startsWith('mui')) {
+        delete values[key];
+      }
+    }
+
     setTimeout(() => {
       setSubmitting(false);
       alert(JSON.stringify(values, null, 2));
