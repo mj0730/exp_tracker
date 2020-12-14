@@ -39,20 +39,30 @@ function FormContainer({ step, setStep, setsubmitted }) {
     offerYear: '',
   };
 
-  function submit(values, { setSubmitting, resetForm }) {
+  async function submit(values, { setSubmitting, resetForm }) {
     for (let key in values) {
       if (key.startsWith('mui')) {
         delete values[key];
       }
     }
 
-    setTimeout(() => {
-      setSubmitting(false);
-      alert(JSON.stringify(values, null, 2));
-      setsubmitted(true);
-      setStep(step + 1);
-      resetForm();
-    }, 500);
+    await fetch(`${NEXT_PUBLIC_API_URL}/submissions`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      mode: 'cors',
+      body: JSON.stringify(values),
+    })
+      .then(() => {
+        setsubmitted(true);
+        setSubmitting(false);
+        setStep(step + 1);
+        resetForm();
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
   }
 
   return (
