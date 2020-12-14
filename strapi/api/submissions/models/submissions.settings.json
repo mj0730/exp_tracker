@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "submissions",
+  "info": {
+    "name": "Submissions",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "inputData": {
+      "type": "json",
+      "required": true
+    },
+    "offerData": {
+      "type": "json",
+      "required": true
+    },
+    "offerYear": {
+      "type": "string",
+      "required": true,
+      "maxLength": 4,
+      "minLength": 4
+    }
+  }
+}
