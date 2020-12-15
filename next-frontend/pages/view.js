@@ -1,15 +1,29 @@
-function View() {
-  return (
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia ipsum totam fuga accusamus doloremque, sequi
-      necessitatibus consequuntur libero vel impedit minus amet in voluptatibus id consequatur, explicabo eum soluta
-      cumque!
-    </p>
-  );
+import PropTypes from 'prop-types';
+
+function View({ data }) {
+  console.log(JSON.parse(data));
+  return <pre>{data}</pre>;
 }
 
 export async function getStaticProps() {
-  return { props: {} };
+  const res = await fetch(`http://localhost:1337/submissions`, {
+    method: 'GET',
+    mode: 'cors',
+  })
+    .then((res) => res.json())
+    .then((data) => JSON.stringify(data))
+    .catch((error) => console.error(error));
+
+  return {
+    props: {
+      data: res,
+    },
+    revalidate: 5,
+  };
 }
 
 export default View;
+
+View.propTypes = {
+  data: PropTypes.string.isRequired,
+};
