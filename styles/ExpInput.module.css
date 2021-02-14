@@ -1,0 +1,12 @@
+.inputList {
+}
+
+.inputListItem,
+.controls {
+  display: flex;
+  justify-content: space-between;
+}
+
+.inputListItem > div {
+  width: 30%;
+}
