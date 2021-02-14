@@ -47,15 +47,18 @@ function FormContainer({ step, setStep, setsubmitted }) {
       }
     }
 
-    await fetch(`${NEXT_PUBLIC_API_URL}/submissions`, {
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/submit`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      mode: 'cors',
+      // mode: 'cors',
       body: JSON.stringify(values),
     })
-      .then(() => {
+      .then((res) => {
+        if (res.status !== 200) {
+          throw new Error('Writing to database failed');
+        }
         setsubmitted(true);
         setSubmitting(false);
         setStep(step + 1);
@@ -63,6 +66,9 @@ function FormContainer({ step, setStep, setsubmitted }) {
       })
       .catch((error) => {
         console.error('Error:', error);
+        alert(
+          'There was an error submitting to the database. Please report the error on the pointsixtyfive.com forums.'
+        );
       });
   }
 
@@ -78,7 +84,6 @@ function FormContainer({ step, setStep, setsubmitted }) {
             {step == 2 && <Submit values={values} isSubmitting={isSubmitting} submitForm={submitForm} />}
             {isSubmitting && <LinearProgress />}
             {step == 3 && <p className={styles.center}>Thank you for adding to the database.</p>}
-            <pre className={styles.debug}>{JSON.stringify(values, null, 2)}</pre>
           </Form>
         )}
       </Formik>

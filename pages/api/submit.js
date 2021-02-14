@@ -7,7 +7,7 @@ export default (req, res) => {
     submission.save((e) => {
       if (e) {
         console.error(e);
-        res.status(500).json(e);
+        res.status(500).json({ e });
       }
     });
 
