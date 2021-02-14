@@ -1,23 +1,35 @@
 import PropTypes from 'prop-types';
+import { useState, useEffect } from 'react';
+import Submission from '../db/mongodb';
+import ViewContainer from '../components/ViewContainer';
+import ViewSearchBar from '../components/ViewSearchBar';
+import styles from '../styles/View.module.css';
 
 function View({ data }) {
-  console.log(JSON.parse(data));
-  return <pre>{data}</pre>;
+  const [query, setQuery] = useState('');
+
+  console.log(data);
+
+  if (query.length == 3) {
+    useEffect(() => {}, [query]);
+  }
+
+  return (
+    <main className={styles.main}>
+      <nav className={styles.nav}>
+        <ViewSearchBar query={query} setQuery={setQuery} />
+      </nav>
+      <ViewContainer data={data}></ViewContainer>
+      <pre>{data}</pre>
+    </main>
+  );
 }
 
 export async function getStaticProps() {
-  const res = await fetch(`http://localhost:1337/submissions`, {
-    method: 'GET',
-    mode: 'cors',
-  })
-    .then((res) => res.json())
-    .then((data) => JSON.stringify(data))
-    .catch((error) => console.error(error));
+  const data = await Submission.find();
 
   return {
-    props: {
-      data: res,
-    },
+    props: { data: data },
     revalidate: 5,
   };
 }
@@ -25,5 +37,5 @@ export async function getStaticProps() {
 export default View;
 
 View.propTypes = {
-  data: PropTypes.string.isRequired,
+  data: PropTypes.array.isRequired,
 };

@@ -56,5 +56,5 @@ function ViewContainer({ data }) {
 export default ViewContainer;
 
 ViewContainer.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: PropTypes.array.isRequired,
 };
