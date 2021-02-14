@@ -66,5 +66,5 @@ export default ExpContainer;
 
 ExpContainer.propTypes = {
   handleChange: PropTypes.func.isRequired,
-  values: PropTypes.array.isRequired,
+  values: PropTypes.object.isRequired,
 };

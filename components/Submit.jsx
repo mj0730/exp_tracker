@@ -60,7 +60,7 @@ function Submit({ isSubmitting, submitForm, values }) {
 export default Submit;
 
 Submit.propTypes = {
-  isSubmitting: PropTypes.func.isRequired,
+  isSubmitting: PropTypes.bool.isRequired,
   submitForm: PropTypes.func.isRequired,
   values: PropTypes.object,
 };
