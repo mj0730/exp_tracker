@@ -8,8 +8,6 @@ import styles from '../styles/View.module.css';
 function View({ data }) {
   const [query, setQuery] = useState('');
 
-  console.log(data);
-
   if (query.length == 3) {
     useEffect(() => {}, [query]);
   }
@@ -25,10 +23,10 @@ function View({ data }) {
 }
 
 export async function getStaticProps() {
-  const data = await Submission.find();
-
+  const data = await Submission.find({}, 'offerData inputData offerYear -_id');
+  const dataFormattedForNext = JSON.parse(JSON.stringify(data));
   return {
-    props: { data: data },
+    props: { data: dataFormattedForNext },
     revalidate: 5,
   };
 }

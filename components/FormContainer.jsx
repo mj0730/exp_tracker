@@ -52,7 +52,6 @@ function FormContainer({ step, setStep, setsubmitted }) {
       headers: {
         'Content-Type': 'application/json',
       },
-      // mode: 'cors',
       body: JSON.stringify(values),
     })
       .then((res) => {
@@ -83,7 +82,7 @@ function FormContainer({ step, setStep, setsubmitted }) {
             )}
             {step == 2 && <Submit values={values} isSubmitting={isSubmitting} submitForm={submitForm} />}
             {isSubmitting && <LinearProgress />}
-            {step == 3 && <p className={styles.center}>Thank you for adding to the database.</p>}
+            {step == 3 && <p className={styles.center}>Your information has been added to the database.</p>}
           </Form>
         )}
       </Formik>
