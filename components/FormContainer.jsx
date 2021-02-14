@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Formik, Form } from 'formik';
 import { Box, LinearProgress } from '@material-ui/core';
 import ExpContainer from './ExpContainer';
@@ -86,3 +87,9 @@ function FormContainer({ step, setStep, setsubmitted }) {
 }
 
 export default FormContainer;
+
+FormContainer.propTypes = {
+  step: PropTypes.number.isRequired,
+  setStep: PropTypes.func.isRequired,
+  setsubmitted: PropTypes.func.isRequired,
+};
