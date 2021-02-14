@@ -15,7 +15,10 @@ function ViewContainer({ data, filter }) {
 
   return (
     <div>
-      {filter.length !== 3 && <p>some text</p>}
+      {filter.length !== 3 &&
+        data.map((item) => {
+          return <ViewLineItem item={item} key={uniqid()} />;
+        })}
       {filter.length == 3 && filteredData.length == 0 ? (
         <p>There were no matches.</p>
       ) : (

@@ -42,7 +42,7 @@ const ViewSearchBar = ({ query, setQuery }) => {
         <Search />
       </IconButton>
       <Divider className={classes.divider} orientation='vertical' />
-      <IconButton color='primary' className={classes.iconButton} aria-label='directions'>
+      <IconButton color='primary' className={classes.iconButton} aria-label='clear'>
         <Close />
       </IconButton>
     </Paper>
