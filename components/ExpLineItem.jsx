@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { MenuItem, InputLabel, FormControl, Box } from '@material-ui/core';
 import { Field } from 'formik';
 import { TextField, Select } from 'formik-material-ui';
@@ -33,3 +34,8 @@ const ExpLineItem = ({ i, handleChange }) => {
 };
 
 export default ExpLineItem;
+
+ExpLineItem.propTypes = {
+  handleChange: PropTypes.func.isRequired,
+  i: PropTypes.number.isRequired,
+};

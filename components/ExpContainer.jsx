@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import ExpLineItem from './ExpLineItem';
 import { FieldArray } from 'formik';
@@ -62,3 +63,8 @@ const ExpContainer = ({ values, handleChange }) => {
 };
 
 export default ExpContainer;
+
+ExpContainer.propTypes = {
+  handleChange: PropTypes.func.isRequired,
+  values: PropTypes.array.isRequired,
+};
