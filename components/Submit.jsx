@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Box, Button } from '@material-ui/core';
 import styles from '../styles/Submit.module.css';
 
@@ -57,3 +58,9 @@ function Submit({ isSubmitting, submitForm, values }) {
 }
 
 export default Submit;
+
+Submit.propTypes = {
+  isSubmitting: PropTypes.func.isRequired,
+  submitForm: PropTypes.func.isRequired,
+  values: PropTypes.object,
+};
