@@ -7,17 +7,20 @@ import styles from '../styles/View.module.css';
 
 function View({ data }) {
   const [query, setQuery] = useState('');
+  const [filter, setFilter] = useState('');
 
-  if (query.length == 3) {
-    useEffect(() => {}, [query]);
-  }
+  useEffect(() => {
+    if (query.length == 3) {
+      setFilter(query);
+    }
+  }, [query]);
 
   return (
     <main className={styles.main}>
       <nav className={styles.nav}>
         <ViewSearchBar query={query} setQuery={setQuery} />
       </nav>
-      <ViewContainer data={data}></ViewContainer>
+      <ViewContainer data={data} filter={filter} />
     </main>
   );
 }
