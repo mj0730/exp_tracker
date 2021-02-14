@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Field } from 'formik';
 import { TextField as FormikTextField } from 'formik-material-ui';
 import { Autocomplete } from 'formik-material-ui-lab';
@@ -364,3 +365,9 @@ const facilities = [
 ];
 
 export default OfferContainer;
+
+OfferContainer.propTypes = {
+  handleChange: PropTypes.func.isRequired,
+  touched: PropTypes.object,
+  errors: PropTypes.object,
+};
