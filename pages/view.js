@@ -20,7 +20,6 @@ function View({ data }) {
         <ViewSearchBar query={query} setQuery={setQuery} />
       </nav>
       <ViewContainer data={data}></ViewContainer>
-      <pre>{data}</pre>
     </main>
   );
 }
