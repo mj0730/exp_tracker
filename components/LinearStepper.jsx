@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import { Box, Button, Step, Stepper, StepLabel, makeStyles } from '@material-ui/core';
 
@@ -14,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function HorizontalLabelPositionBelowStepper({ setIndexPageStep, step }) {
+function HorizontalLabelPositionBelowStepper({ setIndexPageStep, step }) {
   const classes = useStyles();
   const [activeStep, setActiveStep] = useState(0);
   const steps = ['Add previous experience', 'Add offer information', 'Submit'];
@@ -76,3 +77,10 @@ export default function HorizontalLabelPositionBelowStepper({ setIndexPageStep, 
     </Box>
   );
 }
+
+export default HorizontalLabelPositionBelowStepper;
+
+HorizontalLabelPositionBelowStepper.propTypes = {
+  setIndexPageStep: PropTypes.func.isRequired,
+  step: PropTypes.number.isRequired,
+};
