@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import ViewLineItem from './ViewLineItem';
+import { Container, Paper } from '@material-ui/core';
 import styles from '../styles/ViewContainer.module.css';
 import uniqid from 'uniqid';
 
@@ -14,19 +15,22 @@ function ViewContainer({ data, filter }) {
   }
 
   return (
-    <div>
-      {filter.length !== 3 &&
-        data.map((item) => {
-          return <ViewLineItem item={item} key={uniqid()} />;
-        })}
-      {filter.length == 3 && filteredData.length == 0 ? (
-        <p>There were no matches.</p>
-      ) : (
-        filteredData.map((item) => {
-          return <ViewLineItem item={item} key={uniqid()} />;
-        })
-      )}
-    </div>
+    <Container>
+      <Paper className={styles.paperItem} elevation={3}>
+        {filter.length !== 3 &&
+          data.map((item) => {
+            return <ViewLineItem item={item} key={uniqid()} />;
+          })}
+
+        {filter.length == 3 && filteredData.length == 0 ? (
+          <p>There were no matches.</p>
+        ) : (
+          filteredData.map((item) => {
+            return <ViewLineItem item={item} key={uniqid()} />;
+          })
+        )}
+      </Paper>
+    </Container>
   );
 }
 

@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ViewSearchBar = ({ query, setQuery }) => {
+const ViewSearchBar = ({ query, setQuery, setFilter }) => {
   const classes = useStyles();
 
   function handleChange(e) {
@@ -35,14 +35,18 @@ const ViewSearchBar = ({ query, setQuery }) => {
 
     setQuery(val);
   }
+
+  function clearAll() {
+    setFilter('');
+    setQuery('');
+  }
+
   return (
     <Paper component='form' className={classes.root}>
       <InputBase value={query} className={classes.input} placeholder='Search...' onChange={(e) => handleChange(e)} />
-      <IconButton type='submit' className={classes.iconButton} aria-label='search'>
-        <Search />
-      </IconButton>
+      <Search />
       <Divider className={classes.divider} orientation='vertical' />
-      <IconButton color='primary' className={classes.iconButton} aria-label='clear'>
+      <IconButton color='primary' className={classes.iconButton} aria-label='clear' onClick={() => clearAll()}>
         <Close />
       </IconButton>
     </Paper>
@@ -54,4 +58,5 @@ export default ViewSearchBar;
 ViewSearchBar.propTypes = {
   query: PropTypes.string,
   setQuery: PropTypes.func.isRequired,
+  setFilter: PropTypes.func.isRequired,
 };

@@ -18,7 +18,7 @@ function View({ data }) {
   return (
     <main className={styles.main}>
       <nav className={styles.nav}>
-        <ViewSearchBar query={query} setQuery={setQuery} />
+        <ViewSearchBar query={query} setQuery={setQuery} setFilter={setFilter} />
       </nav>
       <ViewContainer data={data} filter={filter} />
     </main>
