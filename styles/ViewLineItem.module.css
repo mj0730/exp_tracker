@@ -1,3 +1,13 @@
 .muiCard {
   margin-bottom: 1em;
 }
+
+/* add to theme */
+.muiChip {
+  margin-right: 0.5rem;
+  min-width: 73px;
+}
+
+.muiBox {
+  margin-bottom: 0.5rem;
+}
