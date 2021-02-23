@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Submission from '../db/mongodb';
 import ViewContainer from '../components/ViewContainer';
 import ViewSearchBar from '../components/ViewSearchBar';
+import ViewHelp from '../components/ViewHelp';
 import styles from '../styles/View.module.css';
 
 function View({ data }) {
@@ -17,6 +18,7 @@ function View({ data }) {
 
   return (
     <main className={styles.main}>
+      <ViewHelp className={styles.help} />
       <nav className={styles.nav}>
         <ViewSearchBar query={query} setQuery={setQuery} setFilter={setFilter} />
       </nav>

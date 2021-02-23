@@ -19,7 +19,7 @@ function ViewLineItem({ item }) {
             {item.inputData.map((data) => (
               <Box className={styles.muiBox} key={uniqid()}>
                 <Chip variant='outlined' color='primary' size='small' label={data.agency} />
-                <Chip variant='outlined' color='primary' size='small' label={data.facility} />
+                <Chip variant='outlined' color='primary' size='small' label={data.facility.toUpperCase()} />
                 <Chip variant='outlined' color='primary' size='small' label={data.type} />
               </Box>
             ))}
