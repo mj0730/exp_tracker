@@ -4,9 +4,10 @@ const Schema = new mongoose.Schema(
   {
     inputData: [
       {
+        _id: false,
         agency: String,
         facility: String,
-        type: { type: { type: String } },
+        type: { type: String },
       },
     ],
     offerData: [String],
