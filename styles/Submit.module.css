@@ -19,7 +19,7 @@
 .listItem {
   display: flex;
   justify-content: space-between;
-  background-color: aliceblue;
+  background-color: #00d1ff20;
   border: none;
   border-radius: 25px;
   font-weight: 500;
@@ -36,15 +36,14 @@
 
 .offers {
   display: flex;
-  flex: 0 0 auto;
   flex-flow: row wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .offerItem {
   margin: 0.2rem;
   padding: 2px 5px;
-  background-color: aliceblue;
+  background-color: #00d1ff20;
   border: none;
   border-radius: 25px;
   font-weight: 500;
