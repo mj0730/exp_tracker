@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import ViewHelp from '../components/ViewHelp';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
@@ -21,9 +23,17 @@ const useStyles = makeStyles({
   fullList: {
     width: 'auto',
   },
+  navIcon: {
+    color: '#00d1ff',
+  },
+  help: {
+    color: '#ff9919',
+    padding: '12px',
+  },
 });
 
 function NavDrawer() {
+  const page = useRouter().pathname;
   const classes = useStyles();
   const [state, setState] = useState({
     top: false,
@@ -71,7 +81,7 @@ function NavDrawer() {
         {listData.map((item) => (
           <Link key={item.text} href={item.link}>
             <ListItem button>
-              <ListItemIcon>{item.icon}</ListItemIcon>
+              <ListItemIcon className={classes.navIcon}>{item.icon}</ListItemIcon>
               <ListItemText primary={item.text} />
             </ListItem>
           </Link>
@@ -82,11 +92,11 @@ function NavDrawer() {
   );
 
   return (
-    <div>
+    <div id='navDrawer'>
       {['left'].map((anchor) => (
         <React.Fragment key={anchor}>
           <IconButton onClick={toggleDrawer(anchor, true)}>
-            <MenuIcon />
+            <MenuIcon style={{ color: '#000000' }} />
           </IconButton>
           <SwipeableDrawer
             anchor={anchor}
@@ -98,6 +108,8 @@ function NavDrawer() {
           </SwipeableDrawer>
         </React.Fragment>
       ))}
+
+      {page === '/view' ? <ViewHelp className={classes.help} /> : null}
     </div>
   );
 }

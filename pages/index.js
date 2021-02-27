@@ -11,7 +11,9 @@ function Home() {
   return (
     <div>
       <NavDrawer disableBackdropTransition={!iOS} disableDiscovery={iOS} />
-      <h1 className={styles.title}>Previous Experience Tracker</h1>
+      <Typography varient='h1' className={styles.title}>
+        Previous Experience Tracker
+      </Typography>
       <Grid container direction='row' justify='center' alignItems='center' spacing={3}>
         <Grid item>
           <Link href='/add'>
