@@ -3,8 +3,8 @@ import { useState, useEffect } from 'react';
 import Submission from '../db/mongodb';
 import ViewContainer from '../components/ViewContainer';
 import ViewSearchBar from '../components/ViewSearchBar';
-import ViewHelp from '../components/ViewHelp';
 import styles from '../styles/View.module.css';
+import NavDrawer from '../components/NavDrawer';
 
 function View({ data }) {
   const [query, setQuery] = useState('');
@@ -17,13 +17,15 @@ function View({ data }) {
   }, [query]);
 
   return (
-    <main className={styles.main}>
-      <ViewHelp className={styles.help} />
-      <nav className={styles.nav}>
-        <ViewSearchBar query={query} setQuery={setQuery} setFilter={setFilter} />
-      </nav>
-      <ViewContainer data={data} filter={filter} />
-    </main>
+    <div>
+      <NavDrawer />
+      <main className={styles.main}>
+        <nav className={styles.nav}>
+          <ViewSearchBar query={query} setQuery={setQuery} setFilter={setFilter} />
+        </nav>
+        <ViewContainer data={data} filter={filter} />
+      </main>
+    </div>
   );
 }
 

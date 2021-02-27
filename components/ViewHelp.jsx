@@ -83,7 +83,7 @@ function ViewHelp({ className }) {
           </Typography>
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={handleClose} color='primary'>
+          <Button autoFocus onClick={handleClose} color='secondary'>
             Close
           </Button>
         </DialogActions>

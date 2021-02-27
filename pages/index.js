@@ -1,41 +1,48 @@
-import { useState } from 'react';
-import Head from 'next/head';
-import LinearStepper from '../components/LinearStepper';
-import FormContainer from '../components/FormContainer';
+import Link from 'next/link';
+import { Card, CardContent, Grid, Typography } from '@material-ui/core';
+import Layout from '../components/Layout';
+import AddBoxIcon from '@material-ui/icons/AddBox';
+import PageviewIcon from '@material-ui/icons/Pageview';
 import styles from '../styles/Home.module.css';
 
-export default function Home() {
-  const [step, setStep] = useState(0);
-  const [submitted, setsubmitted] = useState(false);
-
-  const instructions = [
-    'Get started by adding your information.',
-    'Add all facilities you were offered to select from.',
-    'Verify your information is correct.',
-    'Submission is complete. Thank you!',
-  ];
-
+function Home() {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Previous Experience Tracker</title>
-        <link rel='icon' href='/favicon.ico' />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>Previous Experience Tracker</h1>
-        <p className={styles.description}>{instructions[step]}</p>
-
-        <FormContainer step={step} setStep={setStep} submitted={submitted} setsubmitted={setsubmitted} />
-        <LinearStepper step={step} setIndexPageStep={setStep} submitted={submitted}></LinearStepper>
-      </main>
-
-      <footer className={styles.footer}>
-        <a href='https://pointsixtyfive.com' target='_blank' rel='noopener noreferrer'>
-          <img src='./circle_logo.svg' height='24px' width='24px' alt='pointSixtyFive logo' />
-          pointSixtyFive.com
-        </a>
-      </footer>
-    </div>
+    <Layout>
+      <Typography variant='h1' className={styles.title}>
+        Previous Experience Tracker
+      </Typography>
+      <Grid container direction='row' justify='center' alignItems='center' className={styles.container}>
+        <Grid item>
+          <Link href='/add'>
+            <Card className={styles.homeCard}>
+              <CardContent>
+                <Typography className={styles.cardTitle} gutterBottom>
+                  <AddBoxIcon style={{ fontSize: '5rem' }} />
+                </Typography>
+                <Typography className={styles.cardText} varient='caption'>
+                  Add Your Data
+                </Typography>
+              </CardContent>
+            </Card>
+          </Link>
+        </Grid>
+        <Grid item>
+          <Link href='/view'>
+            <Card className={styles.homeCard}>
+              <CardContent>
+                <Typography className={styles.cardTitle}>
+                  <PageviewIcon style={{ fontSize: '5rem' }} />
+                </Typography>
+                <Typography className={styles.cardText} varient='caption'>
+                  View Database
+                </Typography>
+              </CardContent>
+            </Card>
+          </Link>
+        </Grid>
+      </Grid>
+    </Layout>
   );
 }
+
+export default Home;

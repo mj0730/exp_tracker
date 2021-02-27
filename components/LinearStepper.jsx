@@ -45,7 +45,7 @@ function HorizontalLabelPositionBelowStepper({ setIndexPageStep, step }) {
     <Box className={classes.root}>
       <Stepper activeStep={activeStep} alternativeLabel>
         {steps.map((label) => (
-          <Step key={label}>
+          <Step key={label} className={classes.circle}>
             <StepLabel>{label}</StepLabel>
           </Step>
         ))}

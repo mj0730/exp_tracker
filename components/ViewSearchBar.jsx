@@ -46,7 +46,7 @@ const ViewSearchBar = ({ query, setQuery, setFilter }) => {
       <InputBase value={query} className={classes.input} placeholder='Search...' onChange={(e) => handleChange(e)} />
       <Search />
       <Divider className={classes.divider} orientation='vertical' />
-      <IconButton color='primary' className={classes.iconButton} aria-label='clear' onClick={() => clearAll()}>
+      <IconButton color='secondary' className={classes.iconButton} aria-label='clear' onClick={() => clearAll()}>
         <Close />
       </IconButton>
     </Paper>

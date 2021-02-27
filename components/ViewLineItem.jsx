@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
 
   muiCard: {
     marginBottom: '1em',
-    backgroundColor: '#f8f8ff',
+    background: 'linear-gradient(145deg, rgba(255, 255, 255, 1) 10%, rgba(0, 210, 255, 0.05) 100%)',
   },
   muiChip: {
     marginRight: theme.spacing(0.5),

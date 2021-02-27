@@ -16,19 +16,21 @@ function ViewContainer({ data, filter }) {
 
   return (
     <Container>
-      <Paper className={styles.paperItem} elevation={3}>
+      <Paper className={styles.paperItem} elevation={0}>
         {filter.length !== 3 &&
           data.map((item) => {
             return <ViewLineItem item={item} key={uniqid()} />;
           })}
 
         {filter.length == 3 && filteredData.length == 0 ? (
-          <p>There were no matches.</p>
+          <p style={{ textAlign: 'center' }}>There were no matches.</p>
         ) : (
           filteredData.map((item) => {
             return <ViewLineItem item={item} key={uniqid()} />;
           })
         )}
+
+        <div className={styles.total}>Total Records: {data.length}</div>
       </Paper>
     </Container>
   );
