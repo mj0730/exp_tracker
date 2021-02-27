@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import Head from 'next/head';
+import Layout from '../components/Layout';
 import LinearStepper from '../components/LinearStepper';
 import FormContainer from '../components/FormContainer';
 import styles from '../styles/Add.module.css';
-import NavDrawer from '../components/NavDrawer';
+import { Typography } from '@material-ui/core';
 
 function Add() {
   const [step, setStep] = useState(0);
@@ -17,28 +18,26 @@ function Add() {
   ];
 
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Previous Experience Tracker</title>
-        <link rel='icon' href='/favicon.ico' />
-      </Head>
+    <Layout>
+      <div className={styles.container}>
+        <Head>
+          <title>Previous Experience Tracker</title>
+          <link rel='icon' href='/favicon.ico' />
+        </Head>
 
-      <NavDrawer />
-      <main className={styles.main}>
-        <h1 className={styles.title}>Previous Experience Tracker</h1>
-        <p className={styles.description}>{instructions[step]}</p>
+        <main className={styles.main}>
+          <Typography variant='h1' className='title' gutterBottom>
+            Previous Experience Tracker
+          </Typography>
+          <Typography variant='subtitle1' gutterBottom>
+            {instructions[step]}
+          </Typography>
 
-        <FormContainer step={step} setStep={setStep} submitted={submitted} setsubmitted={setsubmitted} />
-        <LinearStepper step={step} setIndexPageStep={setStep} submitted={submitted}></LinearStepper>
-      </main>
-
-      <footer className={styles.footer}>
-        <a href='https://pointsixtyfive.com' target='_blank' rel='noopener noreferrer'>
-          <img src='./circle_logo.svg' height='24px' width='24px' alt='pointSixtyFive logo' />
-          pointSixtyFive.com
-        </a>
-      </footer>
-    </div>
+          <FormContainer step={step} setStep={setStep} submitted={submitted} setsubmitted={setsubmitted} />
+          <LinearStepper step={step} setIndexPageStep={setStep} submitted={submitted}></LinearStepper>
+        </main>
+      </div>
+    </Layout>
   );
 }
 

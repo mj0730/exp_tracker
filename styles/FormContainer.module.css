@@ -1,16 +1,22 @@
 .formContainer {
   height: auto;
-  width: 400px;
+  width: auto;
   margin-bottom: 1rem;
 }
 
 .form {
   display: flex;
-  min-height: 240px;
+  min-height: 278px;
   justify-content: space-between;
   flex-flow: column;
 }
 
 .center {
   text-align: center;
+}
+
+@media (min-width: 440px) {
+  .formContainer {
+    width: 400px;
+  }
 }

@@ -1,3 +1,10 @@
+.title {
+  margin: 1em auto;
+  text-align: center;
+  line-height: 1.15;
+  font-size: 4rem;
+}
+
 .homeCard {
   width: 200px;
   height: 150px;
@@ -10,13 +17,6 @@
   background: linear-gradient(145deg, rgba(255, 255, 255, 1) 10%, rgba(0, 210, 255, 0.15) 100%);
 }
 
-.title {
-  margin: 1em auto;
-  text-align: center;
-  line-height: 1.15;
-  font-size: 4rem;
-}
-
 .cardTitle {
   margin: 0 auto;
   text-align: center;
@@ -27,4 +27,5 @@
 
 .cardText {
   color: #000;
+  text-align: center;
 }
