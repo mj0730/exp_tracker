@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import ViewLineItem from './ViewLineItem';
+import ViewPagination from './ViewPagination';
 import { Container, Paper } from '@material-ui/core';
 import styles from '../styles/ViewContainer.module.css';
 import uniqid from 'uniqid';
@@ -13,6 +14,10 @@ function ViewContainer({ data, filter }) {
       return facList.includes(filter) ? true : false;
     });
   }
+
+  const totalRecords = data.length;
+  const itemsPerPage = 10;
+  const pageCount = Math.ceil(totalRecords / itemsPerPage);
 
   return (
     <Container>
@@ -31,6 +36,8 @@ function ViewContainer({ data, filter }) {
         )}
 
         <div className={styles.total}>Total Records: {data.length}</div>
+
+        <ViewPagination pageCount={pageCount} />
       </Paper>
     </Container>
   );
