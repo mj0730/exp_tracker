@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 import ViewLineItem from './ViewLineItem';
 import ViewPagination from './ViewPagination';
 import { Container, Paper } from '@material-ui/core';
@@ -6,6 +7,12 @@ import styles from '../styles/ViewContainer.module.css';
 import uniqid from 'uniqid';
 
 function ViewContainer({ data, filter }) {
+  const [page, setPage] = useState(1);
+
+  function handlePageChange(e, val) {
+    setPage(val);
+  }
+
   let filteredData = [];
   if (filter.length == 3) {
     filteredData = data.filter((x) => {
@@ -37,7 +44,7 @@ function ViewContainer({ data, filter }) {
 
         <div className={styles.total}>Total Records: {data.length}</div>
 
-        <ViewPagination pageCount={pageCount} />
+        <ViewPagination pageCount={pageCount} page={page} handlePageChange={handlePageChange} />
       </Paper>
     </Container>
   );

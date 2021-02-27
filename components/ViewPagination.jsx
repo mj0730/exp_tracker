@@ -11,12 +11,12 @@ const useStyles = makeStyles({
   },
 });
 
-function ViewPagination({ pageCount }) {
+function ViewPagination({ pageCount, page, handlePageChange }) {
   const classes = useStyles();
 
   return (
     <Container className={classes.root}>
-      <Pagination count={pageCount} variant='outlined' color='primary' />
+      <Pagination count={pageCount} variant='outlined' color='primary' onChange={handlePageChange} page={page} />
     </Container>
   );
 }
@@ -24,5 +24,7 @@ function ViewPagination({ pageCount }) {
 export default ViewPagination;
 
 ViewPagination.propTypes = {
-  pageCount: PropTypes.number,
+  pageCount: PropTypes.number.isRequired,
+  page: PropTypes.number.isRequired,
+  handlePageChange: PropTypes.func.isRequired,
 };
