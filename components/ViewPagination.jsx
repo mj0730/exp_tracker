@@ -16,7 +16,16 @@ function ViewPagination({ pageCount, page, handlePageChange }) {
 
   return (
     <Container className={classes.root}>
-      <Pagination count={pageCount} variant='outlined' color='primary' onChange={handlePageChange} page={page} />
+      <Pagination
+        count={pageCount}
+        variant='outlined'
+        color='primary'
+        siblingCount={2}
+        showFirstButton={true}
+        showLastButton={true}
+        onChange={handlePageChange}
+        page={page}
+      />
     </Container>
   );
 }

@@ -8,6 +8,9 @@ import uniqid from 'uniqid';
 
 function ViewContainer({ data, filter }) {
   const [page, setPage] = useState(1);
+  const totalRecords = data.length;
+  const itemsPerPage = 10;
+  const pageCount = Math.ceil(totalRecords / itemsPerPage);
 
   function handlePageChange(e, val) {
     setPage(val);
@@ -22,15 +25,11 @@ function ViewContainer({ data, filter }) {
     });
   }
 
-  const totalRecords = data.length;
-  const itemsPerPage = 10;
-  const pageCount = Math.ceil(totalRecords / itemsPerPage);
-
   return (
     <Container>
       <Paper className={styles.paperItem} elevation={0}>
         {filter.length !== 3 &&
-          data.map((item) => {
+          data.slice((page - 1) * itemsPerPage, page * itemsPerPage).map((item) => {
             return <ViewLineItem item={item} key={uniqid()} />;
           })}
 
