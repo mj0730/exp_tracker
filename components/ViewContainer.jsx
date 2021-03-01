@@ -8,37 +8,35 @@ import uniqid from 'uniqid';
 
 function ViewContainer({ data, filter }) {
   const totalRecords = data.length;
-  const itemsPerPage = 2;
+  const itemsPerPage = 10;
   const [page, setPage] = useState(1);
   const [pageCount, setPageCount] = useState(Math.ceil(totalRecords / itemsPerPage));
-  const [currentList, setcurrentList] = useState([]);
-  const [filterIsSet, setfilterIsSet] = useState(false);
+  const [currentList, setcurrentList] = useState(data);
+
+  useEffect(() => {
+    if (filter === '') {
+      setcurrentList(data);
+      setPageCount(Math.ceil(totalRecords / itemsPerPage));
+    } else if (filter.length == 3) {
+      const filteredData = data.filter((x) => {
+        let facList = [];
+        x.inputData.forEach((item) => facList.push(item.facility));
+        return facList.includes(filter) ? true : false;
+      });
+      setcurrentList(filteredData);
+      setPageCount(Math.ceil(filteredData.length / itemsPerPage));
+      setPage(1);
+    }
+  }, [filter]);
 
   function handlePageChange(e, val) {
     setPage(val);
   }
 
-  // let filteredData = [];
-  if (!filterIsSet && filter.length == 3) {
-    const filteredData = data.filter((x) => {
-      let facList = [];
-      x.inputData.forEach((item) => facList.push(item.facility));
-      return facList.includes(filter) ? true : false;
-    });
-    setcurrentList(filteredData);
-    setPageCount(Math.ceil(filteredData.length / itemsPerPage));
-    setfilterIsSet(true);
-  }
-
   return (
     <Container>
       <Paper className={styles.paperItem} elevation={0}>
-        {filter.length !== 3 &&
-          data.slice((page - 1) * itemsPerPage, page * itemsPerPage).map((item) => {
-            return <ViewLineItem item={item} key={uniqid()} />;
-          })}
-
-        {filter.length == 3 && currentList.length == 0 ? (
+        {currentList.length == 0 ? (
           <p style={{ textAlign: 'center' }}>There were no matches.</p>
         ) : (
           currentList.slice((page - 1) * itemsPerPage, page * itemsPerPage).map((item) => {
