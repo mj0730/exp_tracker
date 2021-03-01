@@ -2,16 +2,10 @@ import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import ExpLineItem from './ExpLineItem';
 import { FieldArray } from 'formik';
-
-//Components
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
-
-//Icons
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
-
-//Style
 import styles from '../styles/ExpInput.module.css';
 
 const ExpContainer = ({ values, handleChange }) => {
