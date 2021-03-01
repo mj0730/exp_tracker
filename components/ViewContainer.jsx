@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ViewLineItem from './ViewLineItem';
 import ViewPagination from './ViewPagination';
 import { Container, Paper } from '@material-ui/core';
@@ -7,22 +7,27 @@ import styles from '../styles/ViewContainer.module.css';
 import uniqid from 'uniqid';
 
 function ViewContainer({ data, filter }) {
-  const [page, setPage] = useState(1);
   const totalRecords = data.length;
-  const itemsPerPage = 10;
-  const pageCount = Math.ceil(totalRecords / itemsPerPage);
+  const itemsPerPage = 2;
+  const [page, setPage] = useState(1);
+  const [pageCount, setPageCount] = useState(Math.ceil(totalRecords / itemsPerPage));
+  const [currentList, setcurrentList] = useState([]);
+  const [filterIsSet, setfilterIsSet] = useState(false);
 
   function handlePageChange(e, val) {
     setPage(val);
   }
 
-  let filteredData = [];
-  if (filter.length == 3) {
-    filteredData = data.filter((x) => {
+  // let filteredData = [];
+  if (!filterIsSet && filter.length == 3) {
+    const filteredData = data.filter((x) => {
       let facList = [];
       x.inputData.forEach((item) => facList.push(item.facility));
       return facList.includes(filter) ? true : false;
     });
+    setcurrentList(filteredData);
+    setPageCount(Math.ceil(filteredData.length / itemsPerPage));
+    setfilterIsSet(true);
   }
 
   return (
@@ -33,15 +38,17 @@ function ViewContainer({ data, filter }) {
             return <ViewLineItem item={item} key={uniqid()} />;
           })}
 
-        {filter.length == 3 && filteredData.length == 0 ? (
+        {filter.length == 3 && currentList.length == 0 ? (
           <p style={{ textAlign: 'center' }}>There were no matches.</p>
         ) : (
-          filteredData.map((item) => {
+          currentList.slice((page - 1) * itemsPerPage, page * itemsPerPage).map((item) => {
             return <ViewLineItem item={item} key={uniqid()} />;
           })
         )}
 
-        <div className={styles.total}>Total Records: {data.length}</div>
+        <div className={styles.total}>
+          Records Found: {currentList.length} | Total Records: {totalRecords}
+        </div>
 
         <ViewPagination pageCount={pageCount} page={page} handlePageChange={handlePageChange} />
       </Paper>

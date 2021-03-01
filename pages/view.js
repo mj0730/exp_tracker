@@ -9,7 +9,7 @@ import NavDrawer from '../components/NavDrawer';
 function View({ data }) {
   const [query, setQuery] = useState('');
   const [filter, setFilter] = useState('');
-
+  //need to move the pagination state here, so it can be reset by the search bar clearall function
   useEffect(() => {
     if (query.length == 3) {
       setFilter(query);
