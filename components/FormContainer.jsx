@@ -47,7 +47,7 @@ function FormContainer({ step, setStep, setsubmitted }) {
       }
     }
 
-    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/submit`, {
+    await fetch(`/api/submit`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

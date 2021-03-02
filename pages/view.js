@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
-import Submission from '../db/mongodb';
+import dbConnect from '../db/mongodb';
+import Submission from '../db/schema';
 import ViewContainer from '../components/ViewContainer';
 import ViewSearchBar from '../components/ViewSearchBar';
 import styles from '../styles/View.module.css';
@@ -30,6 +31,7 @@ function View({ data }) {
 }
 
 export async function getStaticProps() {
+  await dbConnect();
   const data = await Submission.find({}, 'offerData inputData offerYear -_id');
   const dataFormattedForNext = JSON.parse(JSON.stringify(data));
   return {
