@@ -1,7 +1,10 @@
-import Submission from '../../db/mongodb';
+import dbConnect from '../../db/mongodb';
+import Submission from '../../db/schema';
 
-export default (req, res) => {
+export default async (req, res) => {
   if (req.method == 'POST') {
+    await dbConnect();
+
     const data = req.body;
     const submission = new Submission(data);
     submission.save((e) => {
