@@ -2,17 +2,8 @@ import mongoose from 'mongoose';
 import Submission from './schema';
 
 const uri = process.env.MONGODB_URI;
-const dbName = process.env.DB_NAME;
 
-if (!uri) {
-  throw new Error('Please define the MONGODB_URI environment variable inside .env.local');
-}
-
-if (!dbName) {
-  throw new Error('Please define the MONGODB_DB environment variable inside .env.local');
-}
-
-mongoose.connect(`${uri}${dbName}`, {
+mongoose.connect(uri, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,
