@@ -33,7 +33,7 @@ const ViewSearchBar = ({ query, setQuery, setFilter }) => {
       return;
     }
 
-    setQuery(val);
+    setQuery(val.toUpperCase());
   }
 
   function clearAll() {
