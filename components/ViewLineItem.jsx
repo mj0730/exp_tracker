@@ -8,17 +8,14 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: theme.spacing(1),
     flex: 1,
   },
-
   muiCard: {
     marginBottom: '1em',
     background: 'linear-gradient(145deg, rgba(255, 255, 255, 1) 10%, rgba(0, 210, 255, 0.05) 100%)',
   },
   muiChip: {
     marginRight: theme.spacing(0.5),
-    minWidth: 73,
-  },
-  muiBox: {
     marginBottom: theme.spacing(1),
+    minWidth: 73,
   },
 }));
 
@@ -38,7 +35,7 @@ function ViewLineItem({ item }) {
               Experience
             </Typography>
             {item.inputData.map((data) => (
-              <Box className={classes.muiBox} key={uniqid()}>
+              <Box key={uniqid()}>
                 <Chip
                   className={classes.muiChip}
                   variant='outlined'
