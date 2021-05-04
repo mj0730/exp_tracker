@@ -25,7 +25,7 @@ function Submit({ isSubmitting, submitForm, values }) {
         <ul className={styles.inputList}>
           <li className={styles.title}>Year offer received:</li>
           {!values.offerYear ? (
-            <li>Please add go back to step 2 and add the offer year.</li>
+            <li>Please return to step 2 and add the offer year.</li>
           ) : (
             <li className={`${styles.listItem} ${styles.year}`}>{values.offerYear}</li>
           )}
@@ -34,7 +34,7 @@ function Submit({ isSubmitting, submitForm, values }) {
         <p className={styles.title}>Facilities:</p>
         <Box className={styles.offers}>
           {!values.offerData.length
-            ? 'Please go back to step 2 and add the facilities you were offered.'
+            ? 'Please return to step 2 and add the facilities you were offered.'
             : values.offerData.map((item, i) => {
                 return (
                   <span key={i} className={styles.offerItem}>
