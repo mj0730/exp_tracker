@@ -21,13 +21,15 @@ const validationSchema = Yup.object().shape({
       type: Yup.string().required('All fields required'),
     })
   ),
-  offerData: Yup.array().of(
-    Yup.string()
-      .matches(facRegex, 'Must be 3 character ID')
-      .min(3, 'Must be exactly 3 characters')
-      .max(3, 'Must be exactly 3 characters')
-      .required('All fields required')
-  ),
+  offerData: Yup.array()
+    .of(
+      Yup.string()
+        .matches(facRegex, 'Must be 3 character ID')
+        .min(3, 'Must be exactly 3 characters')
+        .max(3, 'Must be exactly 3 characters')
+        .required('All fields required')
+    )
+    .required('All fields required'),
   offerYear: Yup.string()
     .matches(yearRegex, 'Please use 4-digit year (2000 or later)')
     .required('Please add the year of your offer'),
