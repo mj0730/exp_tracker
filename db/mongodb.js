@@ -3,11 +3,7 @@ import mongoose from 'mongoose';
 async function dbConnect() {
   const uri = process.env.MONGODB_URI;
 
-  const connect = mongoose.connect(uri, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true,
-  });
+  const connect = mongoose.connect(uri);
 
   const db = mongoose.connection;
 
